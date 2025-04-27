@@ -125,6 +125,7 @@ dependencies {
 
     kapt("org.springframework:spring-context-indexer:$springVersion")
     annotationProcessor "org.springframework:spring-context-indexer:$springVersion"
+    kapt "org.springframework:spring-context-indexer:$springVersion"
 
     // FCM Admin SDK
     implementation('com.google.firebase:firebase-admin:9.3.0') {
@@ -147,7 +148,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion"
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.25")
     implementation "org.mapstruct:mapstruct:$mapstructVersion"
-    kapt("org.springframework.boot:spring-boot-configuration-processor")
+//    kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     kapt "org.mapstruct:mapstruct-processor:$mapstructVersion"
     implementation 'org.scala-lang:scala-library:2.13.7'

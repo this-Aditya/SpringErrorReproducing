@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
+import org.base.server.config.MyConfig;
 import org.base.server.exception.NotFoundException;
 import org.base.server.dto.ProjectDto;
 import org.base.server.dto.ProjectDtos;
@@ -30,11 +31,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ProjectController {
 
+    private MyConfig config;
+
+
     private transient ProjectService projectService;
 
     public ProjectController(
-            ProjectService projectService) {
+            ProjectService projectService,
+            MyConfig config) {
         this.projectService = projectService;
+        this.config = config;
     }
 
     /**
@@ -91,5 +97,10 @@ public class ProjectController {
     public ResponseEntity<ProjectDto> getProjectsUsingProjectId(
             @Valid @PathVariable String projectId) {
         return ResponseEntity.ok(this.projectService.getProjectByProjectId(projectId));
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<String> getInfo() {
+        return ResponseEntity.ok("Name is: " + config.getName() + "Age is: "+ config.getAge());
     }
 }
